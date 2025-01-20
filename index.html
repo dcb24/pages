@@ -1,37 +1,118 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html>
-  <head>
-    <title>My webpage!</title>
-    <link rel="stylesheet" href="styles/styles.css" />
-    <script async src="./javascript/index.js"></script>
-  </head>
-  <body>
-    <h1>Hello, World!</h1>
-    <h4 id='date'></h4>
+    <head>
+        <!-- Recommended meta tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <div class="image-section">
-      <div class="section-style">
-        <img src="https://source.unsplash.com/random/400x200" alt="" />
-        <p>A random image courtesy of unsplash.com.</p>
-      </div>
+        <!-- PyScript CSS -->
+        <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+        <!-- CSS for examples -->
+        <link rel="stylesheet" href="./assets/css/examples.css" />
 
-      <div class="section-style">
-        <img src="https://source.unsplash.com/random/400x200" alt="" />
-        <p>A random image courtesy of unsplash.com.</p>
-      </div>
-    </div>
+        <!-- This script tag bootstraps PyScript -->
+        <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
 
-    <div class="image-section">
-      <div class="section-style">
-        <img src="a" alt="" />
-        <p>A random image courtesy of unsplash.com.</p>
-      </div>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+        
+        <!-- for splashscreen -->
+        <style>
+            #loading { outline: none; border: none; background: transparent }
+        </style>
+        <script type="module">
+            const loading = document.getElementById('loading');
+            addEventListener('py:ready', () => loading.close());
+            loading.showModal();
+        </script>
 
-      <div class="section-style">
-        <img src="https://source.unsplash.com/random/400x200" alt="" />
-        <p>A random image courtesy of unsplash.com.</p>
-      </div>
-    </div>
-  </body>
+        <!-- will be set via PyDom -->
+        <title id="header-title"></title>
+        <link rel="icon" type="image/png" href="./assets/favicon.png" />
+    </head>
+
+    <body>
+        <nav class="navbar" style="background-color: #d5ba98">
+            <div class="app-header">
+                <a href="/">
+                    <img src="./assets/logo.png" class="logo" />
+                </a>
+
+                <!-- will be set via PyDom -->
+                <a class="title" id="page-title" href="" style="color: #383229"></a>
+            </div>
+        </nav>
+
+        <br />
+        
+        <!-- will be set via PyDom -->
+        <div id="page-message"></div>
+
+        <div id="receta-aleatoria">
+            <h3>Obtener una receta aleatoria</h3>
+            <button 
+                type="submit"
+                id="btn-load"
+                class="py-button"
+                py-click="receta_aleatoria"
+            >
+                Buscar
+            </button>
+        </div>
+        
+        <div id="receta-aleatoria-output" hidden>
+            <h4>Receta obtenida:</h4>
+            <div id="receta-aleatoria-inner"></div>
+        </div>
+        <br class="clear" />
+
+        <input type='text' id='foo'><div onclick='$("#foo").focus();'>click</div>
+        
+        <div id="buscar-ingredientes">
+            <h3>Buscar recetas por ingredientes</h3>
+            <input type="text" id="txt-url" class="py-input" size="35" placeholder="Enter text here">
+
+            <button
+                type="submit"
+                id="btn-load"
+                class="py-button"
+                py-click="buscar_por_ingredientes"
+            >
+                Buscar
+            </button>
+        </div>
+        
+        <div id="buscar-ingredientes-output" hidden>
+            <h4>Receta obtenida:</h4>
+            <div id="buscar-ingredientes-inner"></div>
+        </div>
+        
+        <div id="plan-semanal">
+            <h3>Obtener un plan semanal</h3>
+            <button 
+                type="submit"
+                id="btn-load"
+                class="py-button"
+                py-click="crear_plan_semanal"
+            >
+                Buscar
+            </button>
+        </div>
+        
+        <div id="plan-semanal-output" hidden>
+            <h4>Plan obtenido:</h4>
+            <div id="plan-semanal-inner"></div>
+        </div>
+        <br class="clear" />
+        
+        <div id="pandas-dev-console" >
+            <h3>Dev Console</h3>
+            <script type="py" terminal></script>
+        </div>
+        
+        <section class="pyscript">
+            <script type="py" src="./main.py" config="./pyscript.toml"></script>
+        </section>
+    </body>
 </html>
-
