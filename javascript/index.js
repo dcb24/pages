@@ -148,3 +148,9 @@ function crearPlanSemanal() {
 document.querySelector("#random-recipe-btn").addEventListener("click", recetaAleatoria);
 document.querySelector("#search-ingredients-btn").addEventListener("click", buscarPorIngredientes);
 document.querySelector("#weekly-plan-btn").addEventListener("click", crearPlanSemanal);
+
+const name = document.querySelector(".name");
+
+function changeColor(color) {
+   name.style.color = color;
+}
